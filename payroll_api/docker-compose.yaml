@@ -1,0 +1,17 @@
+services:
+  payrolls-app:
+    container_name: 'payrolls-app'
+    image: 'payrolls-app'
+    build:
+      context: .
+      dockerfile: './Dockerfile'
+    volumes:
+      - ./:/var/www/html:cached
+    ports:
+      - 80:80
+    networks:
+      - payrolls_local
+
+networks:
+  payrolls_local:
+    name: payrolls-local

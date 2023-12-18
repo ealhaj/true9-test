@@ -1,0 +1,9 @@
+controllers:
+  resource: '../../src/Controller'
+  type: 'attribute'
+  prefix: '/v1/api'
+  name_prefix: 'api_'
+
+#kernel:
+#  resource: App\Kernel
+#  type: attribute

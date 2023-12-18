@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  title: Payrolls API
+  description: Payrolls API
+  version: 1.0.0
+  contact:
+    name: Ebrahim Alhaj
+    email: ebrahim@codemina.co.uk
+servers:
+  - url: 'http://localhost/v1/api'
+    description: Payrolls API Server
+paths:
+  /payrolls/dates:
+    get:
+      summary: Get Payroll Dates
+      tags: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  payment_date:
+                    type: string
+                    format: date-time
+                    example: '2023-01-27T00:00:00+00:00'
+                    readOnly: true
+                  pay_date:
+                    type: string
+                    format: date-time
+                    example: '2023-01-31T00:00:00+00:00'
+                    readOnly: true
+                required:
+                  - payment_date
+                  - pay_date
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      operationId: get-payrolls-dates
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: year
+          description: Payroll Year
+          required: true
+        - schema:
+            type: number
+          in: query
+          name: month
+          description: Payroll Month
+          required: true
+      description: By using this endpoint you can get employee's payroll dates `payment_date` and `pay_date`
+x-internal: false
+components:
+  schemas:
+    Error:
+      title: Error
+      type: object
+      properties:
+        error:
+          type: string
+
