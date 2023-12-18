@@ -35,7 +35,7 @@ To run the API using Docker, follow these steps inside the api folder:
    
 4. Copy `.env` for local environment <sup>`(optional)`</sup>:
    ```
-   docker cp .env .env.local
+   docker cp payrolls-app:/var/www/html/.env .env.local
    ```
 
 ### Running Unit Tests for the API
